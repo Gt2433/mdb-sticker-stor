@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>MBD Stickers | متجر الستكرات الفاخرة</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    'xs': '375px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                },
+                extend: {
+                    colors: {
+                        darkgreen: {
+                            800: '#064e3b',
+                            900: '#022c22',
+                            950: '#011c15',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-zinc-50 text-zinc-900 font-normal antialiased min-h-screen flex flex-col selection:bg-darkgreen-900 selection:text-white text-base">
+
+    <!-- شريط التنقل العلوي الموائم لجميع الشاشات -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-14 sm:h-16 gap-2 sm:gap-4">
+                
+                <!-- الشعار MBD -->
+                <div class="flex items-center gap-2 shrink-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-black border border-black flex items-center justify-center tracking-wider text-base sm:text-lg font-semibold shadow-sm">
+                        <span class="text-white">M</span><span class="text-emerald-500">B</span><span class="text-white">D</span>
+                    </div>
+                    <div class="hidden xs:block sm:block">
+                        <h1 class="text-lg sm:text-xl font-semibold text-black leading-tight tracking-wide">
+                            M<span class="text-darkgreen-800">B</span>D
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- حقل البحث السريع -->
+                <div class="flex-1 max-w-xs sm:max-w-md mx-1 sm:mx-2">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="ابحث عن ستكر..." 
+                               class="w-full pl-3 pr-8 sm:pr-10 py-1.5 sm:py-2 bg-white rounded-xl text-xs sm:text-sm font-normal text-zinc-800 placeholder:font-normal placeholder:text-zinc-400 focus:outline-none focus:ring-1 focus:ring-darkgreen-800 focus:border-darkgreen-800 border border-zinc-200 transition">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zinc-500 absolute right-2.5 sm:right-3 top-2.5 sm:top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- أزرار الإجراءات: ضبط الواتساب والسلة -->
+                <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                    <!-- زر ضبط رقم الواتساب لصاحب المتجر -->
+                    <button onclick="openWhatsAppConfigModal()" class="p-2 sm:p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center justify-center active:scale-95 shadow-sm" title="ضبط رقم الواتساب لإستقبال الطلبات">
+                        <svg class="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                    </button>
+
+                    <!-- زر سلة التسوق -->
+                    <button onclick="toggleCart(true)" class="relative p-2 sm:p-2.5 rounded-xl bg-black text-white hover:bg-zinc-800 transition flex items-center justify-center active:scale-95 shadow-sm" title="سلة التسوق">
+                        <svg class="w-4.5 h-4.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span id="cartCountBadge" class="absolute -top-1.5 -right-1.5 bg-darkgreen-800 text-white font-medium text-[10px] sm:text-xs w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 flex-1 w-full">
+        <!-- العنوان والتصنيفات -->
+        <div class="mb-4 sm:mb-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg sm:text-2xl font-semibold text-zinc-900">تشكيلة الستكرات الحصرية (46 ستكر)</h2>
+                    <p class="text-xs sm:text-sm text-zinc-500 font-normal mt-0.5">سعر الستكر <span class="font-semibold text-darkgreen-800">30 د.ج</span> | توصيل موحد عبر <span class="font-semibold text-zinc-800">NOEST Express</span> بـ <span class="font-semibold text-darkgreen-800">500 د.ج</span> لـ 58 ولاية</p>
+                </div>
+            </div>
+            
+            <!-- أزرار التصنيف التفاعلية الممتدة تفاعلياً -->
+            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pt-3 pb-1 no-scrollbar touch-pan-x">
+                <button onclick="filterCategory('all', this)" class="cat-btn px-3.5 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition whitespace-nowrap bg-darkgreen-800 text-white border border-darkgreen-800 shadow-sm">الكل (46)</button>
+                <button onclick="filterCategory('dev', this)" class="cat-btn px-3.5 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-normal transition whitespace-nowrap bg-white text-zinc-700 border border-zinc-200 hover:border-zinc-400">برمجة وتقنية</button>
+                <button onclick="filterCategory('anime', this)" class="cat-btn px-3.5 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-normal transition whitespace-nowrap bg-white text-zinc-700 border border-zinc-200 hover:border-zinc-400">أنمي وألعاب</button>
+                <button onclick="filterCategory('quotes', this)" class="cat-btn px-3.5 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-normal transition whitespace-nowrap bg-white text-zinc-700 border border-zinc-200 hover:border-zinc-400">عبارات وفن</button>
+                <button onclick="filterCategory('packs', this)" class="cat-btn px-3.5 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-normal transition whitespace-nowrap bg-white text-zinc-700 border border-zinc-200 hover:border-zinc-400">شعارات MBD</button>
+            </div>
+        </div>
+
+        <!-- شبكة المنتجات التكيفية -->
+        <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6">
+            <!-- سيتم توليد البطاقات ديناميكياً هنا -->
+        </div>
+
+        <!-- حالة عدم وجود نتائج -->
+        <div id="noResults" class="hidden text-center py-12 sm:py-16">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 text-zinc-300">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <p class="text-sm sm:text-base font-medium text-zinc-800">لم يتم العثور على أي ستكر!</p>
+            <p class="text-xs text-zinc-500 font-normal mt-1">جرّب البحث باسم آخر أو اختر قسماً مختلفاً</p>
+        </div>
+    </main>
+
+    <!-- سلة التسوق المنبثقة من الجانب -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-all duration-300 hidden">
+        <!-- الخلفية المظلمة -->
+        <div id="cartBackdrop" onclick="toggleCart(false)" class="absolute inset-0 bg-black/50 backdrop-blur-xs opacity-0 transition-opacity duration-300"></div>
+
+        <div class="absolute inset-y-0 left-0 max-w-full flex pl-0 sm:pl-10">
+            <div id="cartPanel" class="w-screen max-w-md bg-white border-r border-zinc-200 shadow-xl flex flex-col -translate-x-full transition-transform duration-300 pointer-events-auto">
+                
+                <!-- رأس السلة -->
+                <div class="p-3.5 sm:p-4 bg-black text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-sm sm:text-base">سلة التسوق</span>
+                        <span id="cartHeaderCount" class="bg-darkgreen-800 text-white text-[11px] sm:text-xs px-2 py-0.5 rounded-full font-normal">0 عناصر</span>
+                    </div>
+                    <button onclick="toggleCart(false)" class="p-1.5 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- قائمة المنتجات المضافة -->
+                <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-2.5 sm:space-y-3 bg-zinc-50">
+                    <!-- سيتم ملؤها عبر الجافاسكربت -->
+                </div>
+
+                <!-- تذييل السلة والمجموع -->
+                <div class="p-3.5 sm:p-4 border-t border-zinc-200 bg-white space-y-2.5">
+                    <div class="flex justify-between items-center text-xs sm:text-sm font-normal text-zinc-600">
+                        <span>المجموع الفرعي:</span>
+                        <span id="subtotalPrice" class="font-semibold text-zinc-900">0 د.ج</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs sm:text-sm font-normal text-zinc-600">
+                        <div class="flex items-center gap-1">
+                            <span>التوصيل (NOEST Express):</span>
+                        </div>
+                        <span id="shippingPrice" class="text-darkgreen-800 font-semibold">500 د.ج</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm sm:text-base font-semibold text-zinc-900 border-t border-zinc-100 pt-2.5">
+                        <span>الإجمالي الكلي:</span>
+                        <span id="totalPrice" class="text-darkgreen-800 font-bold">0 د.ج</span>
+                    </div>
+                    <button onclick="openCheckoutModal()" class="w-full py-2.5 sm:py-3 bg-darkgreen-800 hover:bg-darkgreen-900 text-white rounded-xl font-medium text-xs sm:text-sm shadow active:scale-[0.98] transition">
+                        إتمام الطلب الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة إتمام الطلب التفاعلية الشاملة للجزائر -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs">
+        <div class="bg-white w-full max-w-md rounded-2xl p-4 sm:p-5 shadow-2xl relative border border-zinc-200 max-h-[92vh] flex flex-col">
+            
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-100">
+                <div>
+                    <h3 class="text-base sm:text-lg font-semibold text-zinc-900">معلومات التوصيل والشحن</h3>
+                    <p class="text-xs text-zinc-500 font-normal">توصيل سريع عبر <span class="font-semibold text-darkgreen-800">NOEST Express</span> (500 د.ج)</p>
+                </div>
+                <button type="button" onclick="closeCheckoutModal()" class="p-1 rounded-lg text-zinc-400 hover:text-black">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <form onsubmit="handleOrderSubmit(event)" class="space-y-3 pt-3 overflow-y-auto flex-1 pr-0.5">
+                <!-- الاسم واللقب -->
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-700 mb-1">الاسم <span class="text-red-500">*</span></label>
+                        <input type="text" id="inputFirstName" required placeholder="مثال: أمين" class="w-full px-3 py-2 text-xs sm:text-sm font-normal rounded-xl border border-zinc-300 focus:outline-none focus:ring-1 focus:ring-darkgreen-800 focus:border-darkgreen-800 text-zinc-800">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-700 mb-1">اللقب <span class="text-red-500">*</span></label>
+                        <input type="text" id="inputLastName" required placeholder="مثال: بن علي" class="w-full px-3 py-2 text-xs sm:text-sm font-normal rounded-xl border border-zinc-300 focus:outline-none focus:ring-1 focus:ring-darkgreen-800 focus:border-darkgreen-800 text-zinc-800">
+                    </div>
+                </div>
+
+                <!-- رقم الهاتف -->
+                <div>
+                    <label class="block text-xs font-medium text-zinc-700 mb-1">رقم الهاتف <span class="text-red-500">*</span></label>
+                    <input type="tel" id="inputPhone" required placeholder="05 / 06 / 07xxxxxxxx" pattern="0[5-7][0-9]{8}" class="w-full px-3 py-2 text-xs sm:text-sm font-normal rounded-xl border border-zinc-300 focus:outline-none focus:ring-1 focus:ring-darkgreen-800 focus:border-darkgreen-800 text-zinc-800">
+                </div>
+
+                <!-- القائمة المنسدلة للولايات (58 ولاية) -->
+                <div>
+                    <label class="block text-xs font-medium text-zinc-700 mb-1">الولاية (58 ولاية) <span class="text-red-500">*</span></label>
+                    <select id="wilayaSelect" required class="w-full px-3 py-2 text-xs sm:text-sm font-normal rounded-xl border border-zinc-300 focus:outline-none focus:ring-1 focus:ring-darkgreen-800 focus:border-darkgreen-800 text-zinc-800 bg-white">
+                        <option value="" disabled selected>جاري تحميل الولايات...</option>
+                    </select>
+                </div>
+
+                <!-- القائمة المنسدلة للبلديات -->
+                <div>
+                    <label class="block text-xs font-medium text-zinc-700 mb-1">البلدية <span class="text-red-500">*</span></label>
+                    <select id="communeSelect" required disabled class="w-full px-3 py-2 text-xs sm:text-sm font-normal rounded-xl border border-zinc-300 focus:outline-none focus:ring-1 focus:ring-darkgreen-800 focus:border-darkgreen-800 text-zinc-800 bg-white disabled:bg-zinc-100 disabled:text-zinc-400">
+                        <option value="" disabled selected>اختر الولاية أولاً...</option>
+                    </select>
+                </div>
+
+                <!-- حقل إدخال البلدية يدوياً -->
+                <div id="manualCommuneContainer" class="hidden transition-all duration-300">
+                    <label class="block text-xs font-medium text-darkgreen-800 mb-1">اكتب اسم بلديتك يدوياً <span class="text-red-500">*</span></label>
+                    <input type="text" id="manualCommuneInput" placeholder="أدخل اسم بلدك/بلديتك هنا..." class="w-full px-3 py-2 text-xs sm:text-sm font-normal rounded-xl border border-emerald-500 focus:outline-none focus:ring-1 focus:ring-darkgreen-800 focus:border-darkgreen-800 text-zinc-800 bg-emerald-50/30">
+                </div>
+
+                <!-- نوع التوصيل -->
+                <div>
+                    <label class="block text-xs font-medium text-zinc-700 mb-1.5">نوع التوصيل <span class="text-red-500">*</span></label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 cursor-pointer hover:border-darkgreen-800 transition text-xs font-medium text-zinc-800">
+                            <input type="radio" name="deliveryType" value="توصيل للمنزل" checked class="accent-darkgreen-800">
+                            <span>🏠 توصيل للمنزل</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 cursor-pointer hover:border-darkgreen-800 transition text-xs font-medium text-zinc-800">
+                            <input type="radio" name="deliveryType" value="توصيل للمكتب" class="accent-darkgreen-800">
+                            <span>🏢 توصيل للمكتب</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- بطاقة شركة الشحن NOEST Express -->
+                <div class="bg-zinc-50 border border-zinc-200 rounded-xl p-3 text-xs space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="font-semibold text-zinc-800 flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-darkgreen-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            شركة التوصيل: NOEST Express
+                        </span>
+                        <span class="text-darkgreen-800 font-bold">500 د.ج</span>
+                    </div>
+                    <p class="text-zinc-500 text-[11px]">توصيل مضمون وسريع إلى 58 ولاية جزائرية.</p>
+                    <a href="https://maps.app.goo.gl/FzqmMmv1jA43Nt977" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-900 font-medium text-[11px] underline pt-0.5">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        عرض مقر NOEST Express على خرائط جوجل
+                    </a>
+                </div>
+
+                <div class="pt-2 flex gap-2">
+                    <button type="submit" class="flex-1 py-2.5 bg-darkgreen-800 hover:bg-darkgreen-900 text-white font-medium rounded-xl text-xs sm:text-sm shadow transition">تأكيد الطلب الآن</button>
+                    <button type="button" onclick="closeCheckoutModal()" class="px-4 py-2.5 bg-zinc-100 text-zinc-700 font-normal rounded-xl text-xs sm:text-sm hover:bg-zinc-200 transition">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة جاري إرسال الطلب (شريط التحميل Loading Bar) -->
+    <div id="orderLoadingModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-xs">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 text-center shadow-2xl border border-zinc-200 space-y-3.5">
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+            </div>
+            
+            <div>
+                <h4 class="text-base font-semibold text-zinc-900" id="loadingModalTitle">جاري معالجة وإرسال طلبك...</h4>
+                <p class="text-xs text-zinc-500 font-normal mt-1" id="loadingModalSub">تجهيز بيانات الشحن والعنوان</p>
+            </div>
+
+            <!-- شريط التحميل Progress Bar -->
+            <div class="w-full bg-zinc-100 rounded-full h-3.5 overflow-hidden p-0.5 border border-zinc-200">
+                <div id="orderProgressBar" class="bg-emerald-600 h-full rounded-full transition-all duration-300 w-0"></div>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] text-zinc-400 font-medium px-1">
+                <span>0%</span>
+                <span id="loadingPercentText" class="text-emerald-700 font-bold">0%</span>
+                <span>100%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة نجاح الطلب -->
+    <div id="successModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-4 sm:p-5 text-center shadow-xl border border-zinc-200">
+            <div class="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-2.5 shadow-sm">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h4 class="text-base font-semibold text-zinc-900">تم تجهيز طلبك بنجاح!</h4>
+            <p class="text-xs text-zinc-500 font-normal mt-0.5">تم توجيه الطلبية ورسالة التفاصيل إلى الواتساب، التوصيل عبر <span class="font-semibold text-zinc-800">NOEST Express</span>.</p>
+
+            <div id="successSummary" class="my-3">
+                <!-- سيتم ملؤها عبر الجافاسكربت -->
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="sendOrderToWhatsApp()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl text-xs sm:text-sm shadow flex items-center justify-center gap-2 transition active:scale-[0.98]">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <span>📲 إرسال / فتح الطلب في الواتساب</span>
+                </button>
+                <button onclick="closeSuccessModal()" class="w-full py-2.5 bg-black text-white font-medium rounded-xl text-xs sm:text-sm hover:bg-zinc-800 transition">إغلاق النافذة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة ضبط رقم الواتساب لصاحب المتجر -->
+    <div id="whatsappConfigModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-4 sm:p-5 shadow-2xl relative border border-zinc-200">
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-100 mb-3">
+                <h3 class="text-sm sm:text-base font-semibold text-zinc-900 flex items-center gap-2">
+                    <span class="text-emerald-600">💬</span> ضبط رقم الواتساب لإستقبال الطلبات
+                </h3>
+                <button type="button" onclick="closeWhatsAppConfigModal()" class="p-1 rounded-lg text-zinc-400 hover:text-black">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <form onsubmit="handleWhatsAppConfigSave(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-medium text-zinc-700 mb-1">رقم الواتساب الخاص بك (صاحب المتجر)</label>
+                    <input type="tel" id="inputStoreWhatsApp" required placeholder="مثال: 0555123456 أو 213555123456" class="w-full px-3 py-2 text-xs sm:text-sm font-normal rounded-xl border border-zinc-300 focus:outline-none focus:ring-1 focus:ring-emerald-600 text-zinc-800 dir-ltr text-right">
+                    <p class="text-[11px] text-zinc-500 mt-1">عند قيام الزبون بالطلب، سيتم فتح الواتساب تلقائياً وتحويل الطلبية مجهزة برقم الهاتف والعنوان والمنتجات إلى هذا الرقم مجاناً 100%.</p>
+                </div>
+                <div class="flex gap-2 pt-1">
+                    <button type="submit" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl text-xs sm:text-sm shadow transition">حفظ الرقم</button>
+                    <button type="button" onclick="closeWhatsAppConfigModal()" class="px-3 py-2 bg-zinc-100 text-zinc-700 font-normal rounded-xl text-xs sm:text-sm hover:bg-zinc-200 transition">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة تفاصيل الستكر والطلب المباشر -->
+    <div id="productDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs">
+        <div class="bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl relative border border-zinc-200 flex flex-col max-h-[92vh]">
+            
+            <!-- زر إغلاق النافذة -->
+            <button onclick="closeProductModal()" class="absolute top-3 left-3 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 hover:bg-white text-zinc-700 hover:text-black flex items-center justify-center shadow-md transition">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <!-- محتوى النافذة القابل للتمرير -->
+            <div class="overflow-y-auto flex-1">
+                <!-- صورة الستكر الكبيرة -->
+                <div class="relative w-full aspect-4/3 sm:aspect-video bg-zinc-100 border-b border-zinc-200 flex items-center justify-center p-4">
+                    <img id="modalProductImg" src="" alt="" class="w-full h-full object-contain">
+                    <span id="modalProductCategory" class="absolute top-3 right-3 bg-black/80 backdrop-blur-xs text-white text-[11px] sm:text-xs px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full"></span>
+                    <span class="absolute bottom-3 right-3 bg-emerald-950/90 text-emerald-300 text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md backdrop-blur-xs font-medium">فينيل عالي الجودة ضد الماء</span>
+                </div>
+
+                <!-- تفاصيل ومعلومات الستكر -->
+                <div class="p-3.5 sm:p-5 space-y-3 sm:space-y-4">
+                    <div>
+                        <div class="flex items-center gap-1.5 mb-1">
+                            <span id="modalProductRating" class="text-darkgreen-800 text-xs font-medium"></span>
+                        </div>
+                        <h3 id="modalProductTitle" class="text-base sm:text-xl font-semibold text-zinc-900 leading-snug"></h3>
+                    </div>
+
+                    <!-- السعر -->
+                    <div class="bg-zinc-50 p-2.5 sm:p-3 rounded-xl border border-zinc-100 flex items-center justify-between">
+                        <span class="text-xs font-normal text-zinc-500">سعر القطعة:</span>
+                        <span id="modalProductPrice" class="text-base sm:text-lg font-bold text-darkgreen-800"></span>
+                    </div>
+
+                    <!-- الوصف والمعلومات -->
+                    <div class="space-y-1.5 sm:space-y-2">
+                        <h4 class="text-xs font-semibold text-zinc-700 uppercase tracking-wider">حول هذا المنتج:</h4>
+                        <p id="modalProductDesc" class="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed"></p>
+                    </div>
+
+                    <!-- مميزات الستكر -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        <div class="flex items-center gap-2 p-2 bg-zinc-50 rounded-lg border border-zinc-100 text-xs text-zinc-600">
+                            <svg class="w-4 h-4 text-darkgreen-800 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>مقاوم للماء والحرارة</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-2 bg-zinc-50 rounded-lg border border-zinc-100 text-xs text-zinc-600">
+                            <svg class="w-4 h-4 text-darkgreen-800 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>لا يترك أي أثر عند إزالته</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-2 bg-zinc-50 rounded-lg border border-zinc-100 text-xs text-zinc-600">
+                            <svg class="w-4 h-4 text-darkgreen-800 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>طباعة ليزرية بألوان مشبعة</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-2 bg-zinc-50 rounded-lg border border-zinc-100 text-xs text-zinc-600">
+                            <svg class="w-4 h-4 text-darkgreen-800 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>مناسب للابتوب، الهاتف، والسيارة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- أزرار الإجراء السريع والطلب -->
+            <div class="p-3 sm:p-4 border-t border-zinc-200 bg-white flex items-center gap-2">
+                <button onclick="modalAddToCart()" class="flex-1 py-2.5 px-3 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-medium rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    <span>أضف للسلة</span>
+                </button>
+                <button onclick="modalBuyNow()" class="flex-1 py-2.5 px-3 bg-darkgreen-800 hover:bg-darkgreen-900 text-white font-medium rounded-xl text-xs sm:text-sm shadow-sm transition flex items-center justify-center gap-1.5 active:scale-95">
+                    <span>طلب فوري</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- إشعار إضافة منتج (Toast) -->
+    <div id="toast" class="fixed bottom-4 left-4 z-50 bg-black text-white px-3.5 py-2.5 rounded-xl shadow-xl text-xs sm:text-sm font-normal flex items-center gap-2 transform translate-y-20 opacity-0 transition duration-300 border border-darkgreen-800">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        <span>تمت إضافة المنتج إلى السلة بنجاح</span>
+    </div>
+
+    <!-- Main JavaScript Logic -->
+    <script src="js/app.js"></script>
+</body>
+</html>
